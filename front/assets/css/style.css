@@ -1,0 +1,289 @@
+:root{
+  --bg: #f6e9ea;
+  --panel: #e9c7c9;
+  --panel2:#edd2d3;
+  --text:#2b2b2b;
+  --muted:#6b6b6b;
+  --btn:#a7c0ad;
+  --btnHover:#95b7a0;
+}
+
+*{ box-sizing:border-box; }
+
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  color:var(--text);
+  background:var(--bg);
+}
+
+/* ================= HEADER ================= */
+
+.topbar{
+  position:sticky;
+  top:0;
+  z-index:10;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 20px;
+  background: rgba(246,233,234,.9);
+  backdrop-filter: blur(6px);
+}
+
+.brand{
+  letter-spacing:.2em;
+  font-size:12px;
+  opacity:.85;
+}
+
+.nav{
+  display:flex;
+  align-items:center;
+}
+
+.nav a{
+  margin-left:16px;
+  text-decoration:none;
+  color:var(--text);
+  font-size:12px;
+  opacity:.8;
+}
+
+.nav a:hover{ opacity:1; }
+
+#lang-switch{
+  margin-left:16px;
+  padding:4px 8px;
+  border-radius:4px;
+  border:1px solid #ccc;
+  background:white;
+  font-size:12px;
+  cursor:pointer;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+  position:relative;
+  min-height:520px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:48px 16px;
+  background: url("/assets/img/hero.jpg") center/cover no-repeat;
+}
+
+.hero-overlay{
+  position:absolute;
+  inset:0;
+  background: rgba(246,233,234,.65);
+}
+
+.hero-card{
+  position:relative;
+  width:min(520px, 92vw);
+  text-align:center;
+  padding:34px 22px;
+}
+
+.logo{
+  display:flex;
+  justify-content:center;
+  margin-bottom:16px;
+}
+
+.logo-img{
+  width:340px;
+  max-width:92%;
+  height:auto;
+  opacity:0.95;
+}
+
+.tagline{
+  font-size:12px;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+
+.btn{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:6px;
+  background:var(--btn);
+  color:#1d1d1d;
+  text-decoration:none;
+  font-size:13px;
+  box-shadow: 0 8px 24px rgba(0,0,0,.08);
+  transition:0.3s;
+}
+
+.btn:hover{
+  background:var(--btnHover);
+}
+
+.hint{
+  margin-top:12px;
+  font-size:12px;
+  color:var(--muted);
+  line-height:1.4;
+}
+
+/* ================= SECTIONS ================= */
+
+.section{
+  padding:36px 16px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:16px;
+}
+
+.panel{
+  width:min(920px, 92vw);
+  background:var(--panel);
+  padding:26px 22px;
+  border-radius:6px;
+  box-shadow: 0 12px 32px rgba(0,0,0,.08);
+}
+
+.panel.small{
+  width:min(560px, 92vw);
+  background:var(--panel2);
+}
+
+.panel h2, .panel h3, .panel h4{
+  margin:0 0 10px;
+  font-family: Georgia, serif;
+  font-weight:500;
+}
+
+.panel p{
+  margin:10px 0;
+  line-height:1.55;
+}
+
+.center{
+  font-family: Georgia, serif;
+  text-align:center;
+}
+
+/* ================= HOW IT WORKS ================= */
+
+.how ul{
+  margin:10px 0 16px 22px;
+}
+
+.center-btn{
+  display:block;
+  width: fit-content;
+  margin: 8px auto 0;
+}
+
+/* ================= COLLECTION ================= */
+
+.collection-sub{
+  text-align:center;
+  margin-bottom:18px;
+  font-family: Georgia, serif;
+}
+
+.collection-item{
+  display:grid;
+  grid-template-columns: 220px 1fr;
+  gap:24px;
+  align-items:center;
+  padding:18px 0;
+}
+
+.collection-item + .collection-item{
+  border-top: 1px solid rgba(0,0,0,.08);
+}
+
+/* ===== IMAGE STYLE + HOVER ANIMATION ===== */
+
+.collection-img{
+  width:220px;
+  height:220px;
+  object-fit:cover;
+  border-radius:10px;
+  box-shadow: 0 10px 22px rgba(0,0,0,.12);
+
+  transition: transform 280ms ease, box-shadow 280ms ease;
+  will-change: transform;
+}
+
+/* плавное увеличение */
+.collection-img:hover{
+  transform: scale(1.07);
+  box-shadow: 0 18px 40px rgba(0,0,0,.20);
+}
+
+/* отключаем hover на телефонах */
+@media (hover: none){
+  .collection-img:hover{
+    transform:none;
+    box-shadow: 0 10px 22px rgba(0,0,0,.12);
+  }
+}
+
+.collection-footer{
+  width:min(920px, 92vw);
+  margin-top:20px;
+  line-height:1.6;
+  font-family: Georgia, serif;
+}
+
+/* ================= REVEAL ANIMATION ================= */
+
+.reveal{
+  opacity:0;
+  transform:translateY(18px);
+  transition: opacity 700ms ease, transform 700ms ease;
+}
+
+.reveal.is-visible{
+  opacity:1;
+  transform:translateY(0);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px){
+
+  .logo-img{
+    width:300px;
+  }
+
+  .collection-item{
+    grid-template-columns: 200px 1fr;
+  }
+
+  .collection-img{
+    width:200px;
+    height:200px;
+  }
+}
+
+@media (max-width: 600px){
+
+  .hero{
+    min-height:420px;
+  }
+
+  .logo-img{
+    width:230px;
+  }
+
+  .collection-item{
+    grid-template-columns: 1fr;
+  }
+
+  .collection-img{
+    width:100%;
+    height:auto;
+    max-height:320px;
+  }
+}
